@@ -10,7 +10,7 @@ const tw = new Twitter({
   access_token_key: process.env.ACCESS_TOKEN_KEY,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
-const TARGET_HASHTAG = '#lovelive';
+const TARGET_HASHTAG = '#TrainDelay';
 
 const HOST = 'api.line.me';
 const CH_SECRET =  process.env.LINE_CH_SECRET;
@@ -57,7 +57,7 @@ const pushClient = (userId, SendMessageObject) => {
 
 tw.stream('statuses/filter', {'track': TARGET_HASHTAG}, function(stream) {
   stream.on('data', function (data) {
-   // if (data.text.indexOf('東條希') !== -1) {
+    if (data.text.indexOf('上野東京ライン') !== -1) {
       let PushSendMessageObject = [{
           type: 'text',
           text: data.text
@@ -69,6 +69,6 @@ tw.stream('statuses/filter', {'track': TARGET_HASHTAG}, function(stream) {
         }, (e) => {console.log(e)});
 
       console.log(data.text);
-    // }
+     }
   });
 });
