@@ -57,7 +57,7 @@ const pushClient = (userId, SendMessageObject) => {
 
 tw.stream('statuses/filter', {'track': TARGET_HASHTAG}, function(stream) {
   stream.on('data', function (data) {
-    if (data.text.indexOf('東條希') !== -1) {
+  //  if (data.text.indexOf('東條希') !== -1) {
       let PushSendMessageObject = [{
           type: 'text',
           text: data.text
@@ -69,6 +69,6 @@ tw.stream('statuses/filter', {'track': TARGET_HASHTAG}, function(stream) {
         }, (e) => {console.log(e)});
 
       console.log(data.text);
-    }
+    //}
   });
 });
